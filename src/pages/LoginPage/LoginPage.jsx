@@ -20,18 +20,16 @@ export default function LoginPage(){
           })
           .then(function (response) {
             console.log(response.data.token);
-            localStorage.setItem('admToken' , response.data.token)
-            navigate('/actionPage')
-
-    
+            localStorage.setItem('admToken' , response.data.token);
+            navigate('/actionPage');
+          
           })
           .catch(function (error) {
             console.log(error);
           });
 
     }
-
-    return(
+ return(
         <div>
             <section className="main">
             
