@@ -39,14 +39,8 @@ export default function LoginPage(){
                     <h3>Login to Riyapola</h3>
                         <TextField sx={{marginBottom:3,width:375}} id="outlined-basic" label="Enter Email" variant="outlined" onChange={(val)=>{setEmail(val.target.value)}}/>
                         <TextField sx={{marginBottom:3,width:375}} id="outlined-basic" label="Enter Pasword" variant="outlined" onChange={(val)=>{setPassword(val.target.value)}}/>
-                        {/* <Link to={'/actionPage'}> */}
                         <Button onClick={()=>Login()} sx={{bgcolor:'purple',color:'white',borderRadius:2,width:85}}>Login</Button>
 
-                        {/* </Link>
-                         */}
-                        
-                        
-                        
                         </Card>
                         </section>
                         </div>
