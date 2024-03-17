@@ -3,7 +3,7 @@ import './LoginPage.css'
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import instance from "../../service/AxiosOrder.jsx";
 
 export default function LoginPage(){
@@ -21,8 +21,12 @@ export default function LoginPage(){
           .then(function (response) {
             console.log(response.data.token);
             localStorage.setItem('admToken' , response.data.token);
-            navigate('/actionPage');
-          
+            if(response.data.token!=null){
+              navigate('/actionPage');
+            }else {
+              console.log("your token has not created....");
+            }
+            
           })
           .catch(function (error) {
             console.log(error);
@@ -34,7 +38,7 @@ export default function LoginPage(){
             <section className="main">
             
                 <Card className="card">
-                    <h3>Login to Riyapola</h3>
+                    <h3>Admin Login</h3>
                         <TextField sx={{marginBottom:3,width:375}} id="outlined-basic" label="Enter Email" variant="outlined" onChange={(val)=>{setEmail(val.target.value)}}/>
                         <TextField sx={{marginBottom:3,width:375}} id="outlined-basic" label="Enter Pasword" variant="outlined" onChange={(val)=>{setPassword(val.target.value)}}/>
                         <Button onClick={()=>Login()} sx={{bgcolor:'purple',color:'white',borderRadius:2,width:85}}>Login</Button>
