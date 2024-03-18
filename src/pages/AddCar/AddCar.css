@@ -1,8 +1,9 @@
 .action{
     display: flex;
-    height: 100vh;
+    flex-direction: column;
+    height: 200vh;
     background-size: cover;
-    background-image: url("./actionImages/car4.jpg");
+    /* background-image: url("./actionImages/car4.jpg"); */
     justify-content: center;
     align-items: center;
 }
@@ -12,6 +13,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 35%;
-    height: 85vh;
+    width: 55%;
+    height: 100vh;
 }
