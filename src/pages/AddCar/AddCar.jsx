@@ -79,48 +79,47 @@ export default function AddCar(){
             autoComplete="off">
             {/* <section className="action"> */}
                     {/* <Card className='card1'> */}
-                        <h3>Car Registration...</h3>
+                        <h3>Car Registration</h3>
 
                         <TextField 
-                        sx={{marginBottom:2,width:375}}
+                        sx={{marginBottom:2,width:350}}
                         id="outlined-basic" 
                         label="Model" 
                         variant="outlined" 
                         onChange={(val)=>setCarModel(val.target.value)}/>
 
                         <TextField 
-                        sx={{marginBottom:2,width:375}} 
+                        sx={{marginBottom:2,width:350}} 
                         id="outlined-basic" 
                         label="Brand" 
                         variant="outlined" 
                         onChange={(val)=>setCarBrand(val.target.value)}/>
 
                         <TextField 
-                        sx={{marginBottom:2,width:375}} 
+                        sx={{marginBottom:2,width:350}} 
                         id="outlined-basic" 
                         label="Transmition Mode" 
                         variant="outlined" 
                         onChange={(val)=>setCarTransMode(val.target.value)}/>
 
                         <TextField 
-                        sx={{marginBottom:2,width:375}} 
+                        sx={{marginBottom:2,width:350}} 
                         id="outlined-basic" 
                         label="Fuel Type" 
                         variant="outlined" 
                         onChange={(val)=>setCarFuelType(val.target.value)}/>
 
                         <TextField 
-                        sx={{marginBottom:2,width:375}} 
+                        sx={{marginBottom:2,width:350}} 
                         id="outlined-basic" 
                         label="Engine Capacity" 
                         variant="outlined" 
                         onChange={(val)=>setCarEngineCap(val.target.value)}/>
                         
-                        </Box>
                         
                         
                         <Button
-                        sx={{marginBottom:2}}
+                        sx={{marginBottom:2,width:350}}
                         component="label"
                         role={undefined}
                         variant="contained"
@@ -134,14 +133,15 @@ export default function AddCar(){
 
                             <img src={img} width={"40%"} height={"60%"} alt=""/>
 
-                            <Stack direction="row" spacing={20}>
-                                <Button onClick={()=>saveCar()} variant="contained" color="success">Save car</Button>
-                                <Button onClick={()=>clearData()} variant="outlined" color="error">Clear</Button>
+                            <Stack sx={{justifyContent:'center',alignItems:'center'}} direction="row" spacing={5}>
+                                <Button sx={{bgcolor:'green',color:'white'}} onClick={()=>saveCar()} variant="contained" color="success">Save car</Button>
+                                <Button sx={{bgcolor:'red',color:'white'}} onClick={()=>clearData()} variant="outlined" color="error">Clear</Button>
                                 </Stack>
                                 
                 {/* </Card> */}
 
             {/* </section> */}
+            </Box>
             
         </div>
     );

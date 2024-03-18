@@ -6,10 +6,10 @@ import Reservation from "../../pages/Reservation/Reservation.jsx";
 
 const routes = [
     {
-        name : "AddCar",
-        key : "addCar",
-        path : "/addCar",
-        component : <AddCar/>
+        name : "Reservation",
+        key : "reservation",
+        path : "/reservation",
+        component : <Reservation/>
     },
 
     {
@@ -28,10 +28,10 @@ const routes = [
     },
 
     {
-        name : "Reservation",
-        key : "reservation",
-        path : "/reservation",
-        component : <Reservation/>
+        name : "AddCar",
+        key : "addCar",
+        path : "/addCar",
+        component : <AddCar/>
     }
 ]
 
