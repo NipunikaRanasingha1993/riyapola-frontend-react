@@ -18,6 +18,23 @@ export default function CarAction(){
 
     const [data,setData] = useState([]);
 
+    const deleteCar = (carId) =>{
+        instance({
+            method:'delete',
+            url:'/car/'+carId,
+        })
+        .then(function(response){
+            console.log(response);
+            alert ('delete successful.....')
+            getAllCars(setData);
+        })
+        .catch(function(error){
+            console.log(error);
+            alert ('please try again....!')
+        });
+
+    }
+
     const getAllCars = () =>{
         instance({
             method: 'get',
@@ -42,6 +59,8 @@ export default function CarAction(){
         .catch((error) => {
             console.error('Error fetching cars:', error);
         });
+
+
     }
 
     return(
@@ -65,7 +84,7 @@ export default function CarAction(){
         </Typography>
       </CardContent>
       <CardActions>
-        <Button sx={{bgcolor:'red',color:'white'}} size="small">Delete</Button>
+        <Button onClick={()=>deleteCar(car.carId)} sx={{bgcolor:'red',color:'white'}} size="small">Delete</Button>
         <Button sx={{bgcolor:'green',color:'white'}} size="small">Update</Button>
       </CardActions>
     </Card>
