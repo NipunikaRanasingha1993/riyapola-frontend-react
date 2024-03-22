@@ -19,7 +19,7 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import routes from '../../common/Navigation/Routes.jsx';
-import { Navigate, Routes ,Route, Link} from 'react-router-dom';
+import { Navigate, Routes, Route, Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 
 const drawerWidth = 240;
@@ -89,9 +89,9 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-export default function Main(){
+export default function Main() {
 
-    const theme = useTheme();
+  const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
@@ -102,18 +102,18 @@ export default function Main(){
     setOpen(false);
   };
 
-  const getRoutes = (value)=>
-  value.map((val)=>
-  <Route key={val.key} path={val.path} element={val.component}/>
-  )
+  const getRoutes = (value) =>
+    value.map((val) =>
+      <Route key={val.key} path={val.path} element={val.component} />
+    )
 
-  const logOutAction = () =>{
+  const logOutAction = () => {
     localStorage.removeItem('admToken');
     window.location.reload();
   }
 
-    return(
-        <Box sx={{ display: 'flex' }}>
+  return (
+    <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
         <Toolbar>
@@ -132,7 +132,7 @@ export default function Main(){
           <Typography variant="h6" noWrap component="div">
             Riyapola Car Center
           </Typography>
-          <Button sx={{display:'flex', marginLeft:90}} onClick={()=>logOutAction()} variant="contained" color='error'>Log out</Button>
+          <Button sx={{ display: 'flex', marginLeft: 90 }} onClick={() => logOutAction()} variant="contained" color='error'>Log out</Button>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
@@ -145,41 +145,41 @@ export default function Main(){
         <List>
           {routes.map((val, index) => (
             <Link key={val.key} to={val.path}>
-            <ListItem disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
+              <ListItem disablePadding sx={{ display: 'block' }}>
+                <ListItemButton
                   sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
+                    minHeight: 48,
+                    justifyContent: open ? 'initial' : 'center',
+                    px: 2.5,
                   }}
                 >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={val.name} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : 'auto',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  </ListItemIcon>
+                  <ListItemText primary={val.name} sx={{ opacity: open ? 1 : 0 }} />
+                </ListItemButton>
+              </ListItem>
             </Link>
-            
+
           ))}
         </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
         <Box>
-            <Routes>
-                {getRoutes(routes)}
-                <Route path={'*'} element={<Navigate to={'/reservation'}/>}/>
-            </Routes>
+          <Routes>
+            {getRoutes(routes)}
+            <Route path={'*'} element={<Navigate to={'/reservation'} />} />
+          </Routes>
 
         </Box>
       </Box>
     </Box>
-    );
+  );
 }
