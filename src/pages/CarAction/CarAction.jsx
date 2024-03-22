@@ -19,12 +19,12 @@ export default function CarAction() {
 
     const [data, setData] = useState([]);
 
-    const [open, setOpen] = useState(false);
-    const [selectData, setSelectData] = useState();
+    const [openAlert, setOpenAlert] = useState(false);
+    const [selectedCar, setSelectedCar] = useState();
 
-    const clickUpdate = (val) => {
-        setOpen(true);
-        setSelectData(val.id);
+    const clickUpdate = (car) => {
+        setSelectedCar(car);
+        setOpenAlert(true);
 
     }
 
@@ -106,8 +106,12 @@ export default function CarAction() {
 
             ))}
 
-            {open &&
-                <DialogBox data={selectData} open={open} handleClose={close} />
+            {openAlert && 
+            <DialogBox
+            handleClose={() => {setOpenAlert(false)} }
+            open={openAlert}
+            car={selectedCar}
+            />
             }
         </div>
     )
