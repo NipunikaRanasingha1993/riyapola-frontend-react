@@ -36,11 +36,7 @@ export default function DialogBox({ car, open, handleClose }) {
     const [carFuelType, setCarFuelType] = useState(car?.carFuelType);
     const [carEngineCap, setCarEngineCap] = useState(car?.carEngineCap);
     const [carName, setCarName] = useState(car?.carName);
-    // const changeImage2 = (val) => {
 
-    //     setImg(URL.createObjectURL(val.target.files[0]))
-    //     setCarName(val.target.files[0])
-    // }
 
 
     const [img, setImg] = useState();
@@ -101,10 +97,9 @@ export default function DialogBox({ car, open, handleClose }) {
                     <TextField value={carFuelType} sx={{ margin: 1 }} id="outlined-basic" label="Fuel Type" variant="outlined" onChange={(val) => setCarFuelType(val.target.value)} />
                     <TextField value={carEngineCap} sx={{ margin: 1 }} id="outlined-basic" label="Engine Capacity" variant="outlined" onChange={(val) => setCarEngineCap(val.target.value)} />
 
-                    {/* <Button value={carName} sx={{backgroundColor:'red',color:'white'}}>Load</Button> */}
 
                     <Button
-                        sx={{ marginBottom: 2, width: 350 }}
+                        sx={{ margin: 1 }}
                         component="label"
                         role={undefined}
                         variant="contained"
@@ -115,7 +110,6 @@ export default function DialogBox({ car, open, handleClose }) {
                         Upload a Car Image
                         <VisuallyHiddenInput type="file" />
                     </Button>
-                    {/* <img src={carName} width={"40%"} height={"60%"} alt="hi"/> */}
 
                     <img src={img} width={"40%"} height={"60%"} alt="" />
 

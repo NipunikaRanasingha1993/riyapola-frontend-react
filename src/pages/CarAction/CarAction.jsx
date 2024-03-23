@@ -106,12 +106,12 @@ export default function CarAction() {
 
             ))}
 
-            {openAlert && 
-            <DialogBox
-            handleClose={() => {setOpenAlert(false)} }
-            open={openAlert}
-            car={selectedCar}
-            />
+            {openAlert &&
+                <DialogBox
+                    handleClose={() => { setOpenAlert(false) }}
+                    open={openAlert}
+                    car={selectedCar}
+                />
             }
         </div>
     )

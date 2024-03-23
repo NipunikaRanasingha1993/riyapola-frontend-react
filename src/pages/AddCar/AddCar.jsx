@@ -1,4 +1,4 @@
-import { Stack, TextField } from '@mui/material'
+import { TextField } from '@mui/material'
 import './AddCar.css'
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
@@ -56,6 +56,8 @@ export default function AddCar() {
     }
 
     const clearData = () => {
+
+
         console.log("Your data were cleared.....");
     }
 
@@ -72,15 +74,14 @@ export default function AddCar() {
             <Box
                 component="form"
                 sx={{
-                    '& > :not(style)': { m: 2, width: '60ch' }, display: 'flex', justifyContent: 'center', alignItems: 'center',
+                    '& > :not(style)': { m: 2, width: '50ch' }, display: 'flex', justifyContent: 'center', alignItems: 'center',
                     flexDirection: 'column'
 
                 }}
                 noValidate
                 autoComplete="off">
-                {/* <section className="action"> */}
-                {/* <Card className='card1'> */}
-                <Typography sx={{display:'flex',justifyContent:'center',alignItems:'center'}} variant="h4" gutterBottom>
+
+                <Typography sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} variant="h4" gutterBottom>
                     CAR REGISTRATION
                 </Typography>
 
@@ -113,7 +114,7 @@ export default function AddCar() {
                     onChange={(val) => setCarFuelType(val.target.value)} />
 
                 <TextField
-                    sx={{ marginBottom: 2, width: 300 }}
+                    sx={{ marginBottom: 2, width: 200 }}
                     id="outlined-basic"
                     label="Engine Capacity"
                     variant="outlined"
@@ -122,6 +123,7 @@ export default function AddCar() {
 
 
                 <Button
+                    sx={{ marginBottom: 2 }}
                     component="label"
                     role={undefined}
                     variant="contained"
@@ -135,14 +137,14 @@ export default function AddCar() {
 
                 <img src={img} width={"40%"} height={"60%"} alt="" />
 
-                <Stack sx={{ justifyContent: 'center', alignItems: 'center' }} direction="row" spacing={5}>
-                    <Button sx={{ bgcolor: 'green', color: 'white' }} onClick={() => saveCar()} variant="contained" color="success">Save car</Button>
-                    <Button sx={{ bgcolor: 'red', color: 'white' }} onClick={() => clearData()} variant="outlined" color="error">Clear</Button>
-                </Stack>
 
-                {/* </Card> */}
+                <Button sx={{ bgcolor: 'green', color: 'white' }} onClick={() => saveCar()} variant="contained" color="success">Save car</Button>
+                <Button sx={{ bgcolor: 'red', color: 'white' }} onClick={() => clearData()} variant="outlined" color="error">Clear</Button>
 
-                {/* </section> */}
+
+
+
+
             </Box>
 
         </div>

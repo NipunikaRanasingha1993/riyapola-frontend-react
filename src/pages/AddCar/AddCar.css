@@ -9,10 +9,10 @@
 }
 
 .card1{
-    display: flex;
+    display:'flex-start';
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 55%;
-    height: 100vh;
+    height: 160vh;
 }
