@@ -28,9 +28,9 @@ export default function CarAction() {
 
     }
 
-    const close = () => {
-        setOpen(false);
-    }
+    // const close = () => {
+    //     setOpen(false);
+    // }
 
     const deleteCar = (carId) => {
         instance({
