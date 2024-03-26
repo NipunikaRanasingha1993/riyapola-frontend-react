@@ -29,7 +29,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function DialogBox({ car, open, handleClose }) {
 
-    const [carId, setCarId] = useState(car?.carId);
+    const[carId,setCarId] = useState(car?.carId);
     const [carModel, setCarModel] = useState(car?.carModel);
     const [carBrand, serCarBrand] = useState(car?.carBrand);
     const [carTransMode, setCarTransMode] = useState(car?.carTransMode);
@@ -46,31 +46,27 @@ export default function DialogBox({ car, open, handleClose }) {
         setCarName(val.target.files[0])
     }
 
-    const updateCar = () => {
+    const updateCar = (car) => {
 
         const data = new FormData();
 
-        // data.append('model',carModel)
-        // data.append('brand',carBrand)
-        // data.append('transMode',carTransMode)
-        // data.append('fuelType',carFuelType)
-        // data.append('engineCap',carEngineCap)
-        // data.append('carName',carName)
+        data.append('model',carModel)
+        data.append('brand',carBrand)
+        data.append('transMode',carTransMode)
+        data.append('fuelType',carFuelType)
+        data.append('engineCap',carEngineCap)
+        data.append('carName',carName)
 
-        // headers: {
-        //     'content-type': 'multipart/form-data'
-        // },
+        
 
-        instance.put(`/car/${carId}`, {
-            model: carModel,
-            brand: carBrand,
-            transMode: carTransMode,
-            fuelType: carFuelType,
-            engineCap: carEngineCap,
-            carName: carName
+        instance.put(`/car/${car.carId}`,data, {
 
-        })
+            headers: {
+            'content-type': 'multipart/form-data'
+        }
+    })
             .then(function (response) {
+                console.log(response)
                 handleClose();
 
             })
@@ -115,7 +111,7 @@ export default function DialogBox({ car, open, handleClose }) {
 
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={updateCar} sx={{ backgroundColor: 'green', color: 'white' }}>Update</Button>
+                    <Button onClick={() => updateCar(car)} sx={{ backgroundColor: 'green', color: 'white' }}>Update</Button>
                     <Button onClick={handleClose} sx={{ backgroundColor: 'red', color: 'white' }}>Close</Button>
                 </DialogActions>
 

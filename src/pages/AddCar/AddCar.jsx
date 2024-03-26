@@ -56,6 +56,23 @@ export default function AddCar() {
     }
 
     const clearData = () => {
+        setCarModel("");
+        setCarBrand("");
+        setCarTransMode("");
+        setCarFuelType("");
+        setCarEngineCap("");
+        setCarImage("");
+        
+
+        const form = document.querySelector('form');
+        if (form) {
+            form.reset();
+        }
+
+
+
+
+
 
 
         console.log("Your data were cleared.....");

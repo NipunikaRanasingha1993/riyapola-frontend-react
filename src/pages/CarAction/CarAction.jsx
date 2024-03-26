@@ -46,8 +46,7 @@ export default function CarAction() {
                 console.log(error);
                 alert('please try again....!')
             });
-
-    }
+        }
 
     const getAllCars = () => {
         instance({
@@ -56,6 +55,7 @@ export default function CarAction() {
         })
 
             .then((response) => {
+                console.log(response);
                 const array = [];
                 response.data.forEach((val) => {
                     array.push({
