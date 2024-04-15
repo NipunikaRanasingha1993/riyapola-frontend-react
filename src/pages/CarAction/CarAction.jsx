@@ -65,7 +65,7 @@ export default function CarAction() {
                         carTransMode: val.transMode,
                         carFuelType: val.fuelType,
                         carEngineCap: val.engineCap,
-                        // carCarName: val.carName,
+                        carCarName: val.images[0].imageName,
                     });
                 });
                 setData(array);
