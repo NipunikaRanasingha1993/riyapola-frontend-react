@@ -59,13 +59,13 @@ export default function CarAction() {
                 const array = [];
                 response.data.forEach((val) => {
                     array.push({
-                        carId: val.id,
+                        carId: val.carId,
                         carModel: val.model,
                         carBrand: val.brand,
                         carTransMode: val.transMode,
                         carFuelType: val.fuelType,
                         carEngineCap: val.engineCap,
-                        carCarName: val.carName,
+                        // carCarName: val.carName,
                     });
                 });
                 setData(array);

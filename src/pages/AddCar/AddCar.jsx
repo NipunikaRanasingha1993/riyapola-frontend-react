@@ -8,6 +8,7 @@ import { useState } from 'react';
 import instance from '../../service/AxiosOrder.jsx';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import Swal from 'sweetalert2';
 
 const VisuallyHiddenInput = styled('input')({
     clip: 'rect(0 0 0 0)',
@@ -29,29 +30,46 @@ export default function AddCar() {
     const [carFuelType, setCarFuelType] = useState("");
     const [carEngineCap, setCarEngineCap] = useState("");
     const [carImage, setCarImage] = useState("");
+    const [carId,setCarId] = useState("");
 
     const saveCar = () => {
-        const data = new FormData();
 
-        data.append('model', carModel)
-        data.append('brand', carBrand)
-        data.append('transMode', carTransMode)
-        data.append('fuelType', carFuelType)
-        data.append('engineCap', carEngineCap)
-        data.append('carName', carImage)
+        instance.post('/car/addNewCar',{
+            model:carModel,
+            brand:carBrand,
+            transMode:carTransMode,
+            fuelType:carFuelType,
+            engineCap:carEngineCap
 
-        instance.post("/car/addNewCar", data, {
-            headers: {
-                'content-type': 'multipart/form-data'
-            }
         })
-            .then(function (response) {
-                console.log(response);
+        .then(function(response){
+            console.log(response.data.carId);
+            Swal.fire("Car was saved....!");
+        })
+        .catch(function(error){
+            Swal.fire("Something wrong.Please try again....!");
+        })
+        // const data = new FormData();
 
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
+        // data.append('model', carModel)
+        // data.append('brand', carBrand)
+        // data.append('transMode', carTransMode)
+        // data.append('fuelType', carFuelType)
+        // data.append('engineCap', carEngineCap)
+        // data.append('carName', carImage)
+
+        // instance.post("/car/addNewCar", data, {
+        //     headers: {
+        //         'content-type': 'multipart/form-data'
+        //     }
+        // })
+        //     .then(function (response) {
+        //         console.log(response);
+
+        //     })
+        //     .catch(function (error) {
+        //         console.log(error);
+        //     })
 
     }
 
