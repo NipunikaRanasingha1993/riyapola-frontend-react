@@ -29,13 +29,13 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function DialogBox({ car, open, handleClose }) {
 
-    const[carId,setCarId] = useState(car?.carId);
+    // const[carId,setCarId] = useState(car?.carId);
     const [carModel, setCarModel] = useState(car?.carModel);
     const [carBrand, serCarBrand] = useState(car?.carBrand);
     const [carTransMode, setCarTransMode] = useState(car?.carTransMode);
     const [carFuelType, setCarFuelType] = useState(car?.carFuelType);
     const [carEngineCap, setCarEngineCap] = useState(car?.carEngineCap);
-    const [carName, setCarName] = useState(car?.carName);
+    const [carImage, setCarImage] = useState(car?.carCarName);
 
 
 
@@ -43,30 +43,63 @@ export default function DialogBox({ car, open, handleClose }) {
     const changeImage = (val) => {
         console.log(val.target.files[0])
         setImg(URL.createObjectURL(val.target.files[0]))
-        setCarName(val.target.files[0])
+        setCarImage(val.target.files[0])
     }
 
     const updateCar = (car) => {
 
-        const data = new FormData();
+        instance.put(`/car/${car.carId}`,{
+            model:carModel,
+            brand:carBrand,
+            transMode:carTransMode,
+            fuelType:carFuelType,
+            engineCap:carEngineCap
+        })
+        // .then(function(response){
+        //     const carId=response.data.carId;
+        //     const data = new FormData();
+        //     data.append('imageName',carImage)
+        //     data.append('carId',carId)
 
-        data.append('model',carModel)
-        data.append('brand',carBrand)
-        data.append('transMode',carTransMode)
-        data.append('fuelType',carFuelType)
-        data.append('engineCap',carEngineCap)
-        data.append('carName',carName)
+        //     instance.put(`/car/${car.carId}`,data, {
+
+        //         headers: {
+        //         'content-type': 'multipart/form-data'
+        //     }
+
+
+
+        // })
+        // .then(function (response) {
+        //     console.log(response)
+        //     // handleClose();
+
+        // })
+        // .catch(function (error) {
+        //     console.log(error);
+        // });
+
+    // })
+
+    //     const data = new FormData();
+
+    //     data.append('model',carModel)
+    //     data.append('brand',carBrand)
+    //     data.append('transMode',carTransMode)
+    //     data.append('fuelType',carFuelType)
+    //     data.append('engineCap',carEngineCap)
+    //     data.append('carName',carName)
 
         
 
-        instance.put(`/car/${car.carId}`,data, {
+    //     instance.put(`/car/${car.carId}`,data, {
 
-            headers: {
-            'content-type': 'multipart/form-data'
-        }
-    })
+    //         headers: {
+    //         'content-type': 'multipart/form-data'
+    //     }
+    // })
             .then(function (response) {
-                console.log(response)
+                console.log(response.data.carId)
                 handleClose();
 
             })
