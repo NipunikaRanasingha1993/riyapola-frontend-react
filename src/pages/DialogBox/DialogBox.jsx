@@ -55,31 +55,31 @@ export default function DialogBox({ car, open, handleClose }) {
             fuelType:carFuelType,
             engineCap:carEngineCap
         })
-        // .then(function(response){
-        //     const carId=response.data.carId;
-        //     const data = new FormData();
-        //     data.append('imageName',carImage)
-        //     data.append('carId',carId)
+        .then(function(response){
+            const carId=response.data.carId;
+            const data = new FormData();
+            data.append('imageName',carImage)
+            data.append('carId',carId)
 
-        //     instance.put(`/car/${car.carId}`,data, {
+            instance.put(`/images/updateImages/${car.carId}`,data, {
 
-        //         headers: {
-        //         'content-type': 'multipart/form-data'
-        //     }
+                headers: {
+                'content-type': 'multipart/form-data'
+            }
 
 
 
-        // })
-        // .then(function (response) {
-        //     console.log(response)
-        //     // handleClose();
+        })
+        .then(function (response) {
+            console.log(response)
+            // handleClose();
 
-        // })
-        // .catch(function (error) {
-        //     console.log(error);
-        // });
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
 
-    // })
+    })
 
     //     const data = new FormData();
 
