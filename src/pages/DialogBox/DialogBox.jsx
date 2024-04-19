@@ -29,7 +29,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function DialogBox({ car, open, handleClose }) {
 
-    // const[carId,setCarId] = useState(car?.carId);
+    const[carId,setCarId] = useState(car?.carId);
     const [carModel, setCarModel] = useState(car?.carModel);
     const [carBrand, serCarBrand] = useState(car?.carBrand);
     const [carTransMode, setCarTransMode] = useState(car?.carTransMode);
@@ -56,12 +56,12 @@ export default function DialogBox({ car, open, handleClose }) {
             engineCap:carEngineCap
         })
         .then(function(response){
-            const carId=response.data.carId;
+            const imgId=response.data.images[0].imagesId;
             const data = new FormData();
             data.append('imageName',carImage)
             data.append('carId',carId)
 
-            instance.put(`/images/updateImages/${car.carId}`,data, {
+            instance.put(`/images/updateImages/${imgId}`,data, {
 
                 headers: {
                 'content-type': 'multipart/form-data'
@@ -99,7 +99,7 @@ export default function DialogBox({ car, open, handleClose }) {
     //     }
     // })
             .then(function (response) {
-                console.log(response.data.carId)
+                console.log(response.data.images[0].imagesId)
                 handleClose();
 
             })
